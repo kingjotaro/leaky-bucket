@@ -1,7 +1,7 @@
 {
-  "name": "testturbo",
+  "name": "leaky-bucket",
   "private": true,
-  "scripts": {
+  "scripts": {    
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
