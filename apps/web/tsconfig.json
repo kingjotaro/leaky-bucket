@@ -1,18 +1,15 @@
 {
-  "extends": "@repo/typescript-config/nextjs.json",
+  "include": ["src", "types/**/*"],
+  "exclude": ["node_modules/**"],
   "compilerOptions": {
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ]
+    "target": "es2022", 
+    "module": "commonjs",
+    "rootDir": "./src",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "noEmit": false
   },
-  "include": [
-    "next-env.d.ts",
-    "next.config.js",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts"
-  ],
-  "exclude": ["node_modules"]
+  "ts-node": {
+    "files": true
+  }
 }
