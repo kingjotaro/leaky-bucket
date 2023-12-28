@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "ts-node src/index.ts",
     "test": "NODE_ENV=test jest --forceExit"
+    
   },
   "author": "",
   "license": "ISC",

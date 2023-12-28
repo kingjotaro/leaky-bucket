@@ -8,7 +8,7 @@
     "incremental": false,
     "isolatedModules": true,
     "lib": ["es2022", "DOM", "DOM.Iterable"],
-    "module": "NodeNext",
+    "module": "commonjs",
     "moduleDetection": "force",
     "moduleResolution": "NodeNext",
     "noUncheckedIndexedAccess": true,
@@ -16,5 +16,8 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "ES2022"
+  },
+  "ts-node": {
+    "files": true
   }
 }
