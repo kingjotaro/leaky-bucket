@@ -1,7 +1,7 @@
 {
   "name": "leaky-bucket",
   "private": true,
-  "scripts": {    
+  "scripts": {
     "build": "turbo build",
     "type": "module",
     "dev": "turbo dev",
@@ -18,5 +18,8 @@
   "workspaces": [
     "apps/*",
     "packages/*"
-  ]
+  ],
+  "dependencies": {
+
+  }
 }
