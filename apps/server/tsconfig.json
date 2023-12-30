@@ -3,7 +3,7 @@
   "exclude": ["node_modules/**"],
   "compilerOptions": {
     "target": "es2022", 
-    "module": "commonjs",
+    "module": "CommonJS",
     "rootDir": "./src",
     "esModuleInterop": true,
     "skipLibCheck": true,

@@ -8,12 +8,15 @@ import getrandom from "./routes/query_celcoin_random";
 import schedule from 'node-schedule';
 import increment_bucket from './redis-bucket/bucket_schedule'
 
+
 const app = new Koa();
 const router = new Router();
+
 
 router.get("/", async (ctx: ParameterizedContext) => {
   ctx.body = await client.keys("*");
 });
+
 app.use(get.routes());
 app.use(getrandom.routes());
 app.use(verifykey.routes());

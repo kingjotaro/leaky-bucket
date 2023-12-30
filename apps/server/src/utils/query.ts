@@ -39,18 +39,18 @@ export const getQuery = async (
       ctx.body = responseData;
 
       if (cpfOrCnpj.length <= 11) {
-        remove_1token_cpf();
+        await remove_1token_cpf();
         console.log("cpf");
       } else {
-        remove_1token_cnpj();
+        await remove_1token_cnpj();
         console.log("cnpj");
       }
     }
     if (status === 400) {
       if (cpfOrCnpj.length > 11) {
-        remove_20token_cnpj();
+        await remove_20token_cnpj();
       } else {
-        remove_20token_cpf();
+        await remove_20token_cpf();
       }
       throw new Error('Bad request, not find any data')
     }

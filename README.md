@@ -19,7 +19,7 @@ git clone https://github.com/kingjotaro/leaky-bucket
 2. Get your enviroment [variables](https://developers.celcoin.com.br/docs/obtendo-acesso-%C3%A0s-apis)
 
    
-3. Set up your environment variables:
+3. Set up your environment variables in server:
    Create a `.env` file in the root directory and provide the following variables:
 
    * CELCOIN_CLIENT_ID=your_client_id
@@ -37,9 +37,10 @@ git clone https://github.com/kingjotaro/leaky-bucket
 ## Usage
 
 Start the application using the following command:
-bash
-npm start
+turbo dev
+
 This will launch the server on port 3000.
+And the frontend in port xxxx
 
 ## API Endpoints
 

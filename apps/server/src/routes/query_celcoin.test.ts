@@ -1,7 +1,7 @@
 import supertest from "supertest";
 import { app } from "../index";
 import { client } from "../redis";
-import getCPF from "../utils/cpf_generator";
+import getCPF from "../utils/cpf_generator.js";
 
 it("should receive a valid CPF, fetch data, and reduce one token from Redis bucket", async () => {
   const cpf = getCPF();
