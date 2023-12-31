@@ -41,7 +41,17 @@ const start = async () => {
       console.log("App listening on port 3000");
     });
   }
- 
+  const valueEntities = await client.hGet("Bucket", "Entities");
+  if (valueEntities !== null) {
+
+    global.entities_tokens = parseInt(valueEntities, 10);
+  }
+
+  const valueIndividuals = await client.hGet("Bucket", "Individuals");
+  if (valueIndividuals !== null) {
+    global.individuals_tokens = parseInt(valueIndividuals, 10);
+  }
+  
   const keyExists = await client.get("createkey");
   if (keyExists !== null) {
     global.celcoinkey = keyExists;

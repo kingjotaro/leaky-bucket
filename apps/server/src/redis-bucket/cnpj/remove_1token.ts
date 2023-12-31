@@ -1,18 +1,11 @@
-import { client } from "../../redis";
+export default function remove_1token_cnpj() {
+  
 
-export default async function remove_1token_cnpj() {
-  const totalBucket = await client.hGet("Bucket", "Entities");
-
-  if (totalBucket !== undefined) {
-    const bucket = parseInt(totalBucket, 10);
-
-    if (bucket > 0) {
-      const newBucket = bucket - 1;
-      await client.hSet("Bucket", "Entities", newBucket);
+    if (global.entities_tokens > 0) {
+      global.entities_tokens = global.entities_tokens - 1;
     } else {
       console.error("Bucket size is less than 1.");
     }
-  } else {
-    console.error("Total bucket is undefined.");
-  }
 }
+  
+

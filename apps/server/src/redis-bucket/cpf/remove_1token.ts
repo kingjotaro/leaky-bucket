@@ -1,18 +1,8 @@
-import { client } from "../../redis";
-
-export default async function remove_1token_cpf() {
-  const totalBucket = await client.hGet("Bucket", "Individuals");
-
-  if (totalBucket !== undefined) {
-    const bucket = parseInt(totalBucket, 10);
-
-    if (bucket > 0) {
-      const newBucket = bucket - 1;
-      await client.hSet("Bucket", "Individuals", newBucket);
-    } else {
-      console.error("Bucket is empty.");
-    }
+export default function remove_1token_cpf() {
+ 
+  if (global.individuals_tokens > 0) {
+    global.individuals_tokens = global.individuals_tokens - 1;
   } else {
-    console.error("Total bucket is undefined.");
+    console.error("Bucket size is less than 1.");
   }
 }
