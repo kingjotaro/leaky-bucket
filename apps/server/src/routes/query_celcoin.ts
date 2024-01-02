@@ -3,11 +3,22 @@ import Router from "koa-router";
 import { client } from "../redis";
 import { getQuery } from "../utils/query";
 import verify_tokens from "../redis-bucket/verify_tokens";
-
+import ratelimit from "koa-ratelimit"
 const router = new Router();
 
-router.get("/get/:cpfOrCnpj", async (ctx: ParameterizedContext) => {
 
+const db = new Map();
+
+
+router.get("/get/:cpfOrCnpj", 
+ratelimit({
+  driver: 'memory',
+  db: db,
+  duration: 60000, 
+  max: 100,
+ 
+}),
+async (ctx: ParameterizedContext) => {
   const cpfOrCnpj = ctx.params.cpfOrCnpj;
   const key = await client.exists(cpfOrCnpj);
   if (key === 1) {

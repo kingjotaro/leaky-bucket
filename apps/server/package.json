@@ -4,8 +4,9 @@
   "description": "",
   "main": "index",
   "scripts": {
-    "dev": "ts-node src/index.ts",
-    "test": "NODE_ENV=test jest --forceExit"
+    "dev": "NODE_FLAG=free ts-node src/index.ts",
+    "test": "NODE_ENV=test NODE_FLAG=free  jest --forceExit",
+    "dev1": "NODE_FLAG=barrier ts-node src/index.ts"
   },
   "author": "",
   "license": "ISC",
@@ -28,6 +29,7 @@
     "api": "^6.1.1",
     "koa": "^2.14.2",
     "koa-bodyparser": "^4.4.1",
+    "koa-ratelimit": "^5.1.0",
     "koa-router": "^12.0.1",
     "koa2-cors": "^2.0.6",
     "node-schedule": "^2.1.1",

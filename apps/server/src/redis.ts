@@ -18,4 +18,4 @@ const createRedisClient = () => {
 
   return client;
 };
-export const client = createRedisClient();
+ export const client = createRedisClient();

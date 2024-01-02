@@ -5,6 +5,7 @@
     "build": "turbo build",
     "type": "module",
     "dev": "turbo dev",
+    "dev1": "turbo dev1",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
@@ -20,6 +21,7 @@
     "packages/*"
   ],
   "dependencies": {
-
+    "async-ratelimiter": "^1.3.13",
+    "koa-ratelimit": "^5.1.0"
   }
 }
