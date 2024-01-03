@@ -24,6 +24,14 @@
       "dev1": {
         "cache": false,
         "persistent": true
+      },
+      "dev2": {
+        "cache": false,
+        "persistent": true
+      },
+      "dev3": {
+        "cache": false,
+        "persistent": true
       }
 
     }

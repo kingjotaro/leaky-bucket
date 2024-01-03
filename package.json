@@ -6,6 +6,8 @@
     "type": "module",
     "dev": "turbo dev",
     "dev1": "turbo dev1",
+    "dev2": "turbo dev1",
+    "dev3": "turbo dev1",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },

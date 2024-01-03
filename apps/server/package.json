@@ -4,9 +4,11 @@
   "description": "",
   "main": "index",
   "scripts": {
-    "dev": "NODE_FLAG=free ts-node src/index.ts",
     "test": "NODE_ENV=test NODE_FLAG=free  jest --forceExit",
-    "dev1": "NODE_FLAG=barrier ts-node src/index.ts"
+    "dev": "NODE_FLAG=1000 ts-node src/index.ts",
+    "dev1": "NODE_FLAG=100 ts-node src/index.ts",
+    "dev2": "NODE_FLAG=1000 ts-node src/index.ts",
+    "dev3": "NODE_FLAG=100 ts-node src/index.ts"
   },
   "author": "",
   "license": "ISC",

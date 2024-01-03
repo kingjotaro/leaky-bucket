@@ -8,6 +8,7 @@ import getrandom from "./routes/query_celcoin_random";
 import schedule from 'node-schedule';
 import increment_bucket from './redis-bucket/bucket_schedule'
 import cors from "koa2-cors";
+import bucket_update from './redis-bucket/bucket_update'
 
 const app = new Koa();
 const router = new Router();
@@ -32,6 +33,14 @@ const job = schedule.scheduleJob('0 * * * *', () => {
   increment_bucket();
 });
 console.log('Job ongoing...');
+
+
+const job2 = schedule.scheduleJob('*/10 * * * * *', () => {
+  bucket_update();
+});
+console.log('Job 2 ongoing too...');
+
+
 
 
 const start = async () => {
