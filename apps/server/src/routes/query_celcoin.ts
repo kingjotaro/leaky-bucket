@@ -4,6 +4,9 @@ import { client } from "../redis";
 import { getQuery } from "../utils/query";
 import verify_tokens from "../redis-bucket/verify_tokens";
 import ratelimit from "koa-ratelimit"
+import dotenv from 'dotenv'
+
+dotenv.config();
 const router = new Router();
 
 
@@ -15,7 +18,7 @@ ratelimit({
   driver: 'memory',
   db: db,
   duration: 60000, 
-  max: 100,
+  max: process.env.NODE_FLAG,
  
 }),
 async (ctx: ParameterizedContext) => {

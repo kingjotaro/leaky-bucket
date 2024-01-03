@@ -20,7 +20,7 @@ async function getreq() {
   }
 }
 
-for (let i = 0; i < 500; i++) {
+for (let i = 0; i < 1000; i++) {
   getreq();
 }
 
