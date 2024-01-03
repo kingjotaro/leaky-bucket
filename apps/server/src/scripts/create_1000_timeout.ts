@@ -8,21 +8,22 @@ async function getreq() {
   
   try {
     const response = await fetch(url);
-
+    
     if (!response.ok) {
       throw new Error(`Erro na requisição: ${response.statusText}`);
     }
-    const status = response.status
+
     const data = await response.json();
-    console.log('Resposta recebida:', status);
+    const status = await response.status
+    console.log('Sucesss', status)
   } catch (error) {
-    console.error('Erro na requisição:', error.message);
+    console.log('Erro na requisição:', error.message);
   }
 }
 
 for (let i = 0; i < 1000; i++) {
   getreq();
+  await new Promise(resolve => setTimeout(resolve, 300)); 
 }
-
 
 

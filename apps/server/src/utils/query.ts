@@ -41,7 +41,7 @@ export const getQuery = async (
       if (cpfOrCnpj.length <= 11) {
         remove_1token_cpf();
         console.log("cpf");
-        console.log(global.individuals_tokens)
+        console.log(global.individuals_tokens);
       } else {
         remove_1token_cnpj();
         console.log("cnpj");
@@ -53,7 +53,7 @@ export const getQuery = async (
       } else {
         remove_20token_cpf();
       }
-      throw new Error('Bad request, not find any data')
+      throw new Error("Bad request, not find any data");
     }
   } catch (error) {
     console.error(`Error: ${error.message}`);

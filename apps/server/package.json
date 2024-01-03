@@ -5,8 +5,8 @@
   "main": "index",
   "scripts": {
     "test": "NODE_ENV=test NODE_FLAG=free  jest --forceExit",
-    "dev": "NODE_FLAG=1000 ts-node src/index.ts",
-    "dev1": "NODE_FLAG=100 ts-node src/index.ts",
+    "dev": "NODE_FLAG=1000 NODE_FLAG2=60000 ts-node src/index.ts",
+    "dev1": "NODE_FLAG=100 NODE_FLAG2=60000 ts-node src/index.ts",
     "dev2": "NODE_FLAG=1000 ts-node src/index.ts",
     "dev3": "NODE_FLAG=100 ts-node src/index.ts"
   },
