@@ -24,8 +24,8 @@ app.use(async function (ctx, next) {
  await ratelimit({
     driver: "memory",
     db: db,
-    duration: 60000,
-    max: 100,
+    duration: process.env.NODE_FLAG2,
+    max: process.env.NODE_FLAG,
     errorMessage: "Too many requests, slow down bro!",
     errorStatus: 429,
   })(ctx, next)

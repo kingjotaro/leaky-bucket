@@ -1,7 +1,10 @@
-import getCPF2 from '../utils/cpf_generator'
+import getCPF2 from '../utils/cpf_generator';
 
 async function getreq() {
-
+  await new Promise(resolve => {
+    console.log("passou aqui");
+    setTimeout(resolve, 300);
+  });
   const cpf = getCPF2();
   const url = 'http://localhost:3000/get/' + cpf;
   console.log('URL:', url);
@@ -15,15 +18,16 @@ async function getreq() {
 
     const data = await response.json();
     const status = await response.status
-    console.log('Sucesss', status)
+    console.log('Sucesso', status)
   } catch (error) {
     console.log('Erro na requisição:', error.message);
   }
 }
 
-for (let i = 0; i < 1000; i++) {
-  getreq();
-  await new Promise(resolve => setTimeout(resolve, 300)); 
+async function runRequests() {
+  for (let i = 0; i < 1000; i++) {
+    await getreq();
+  }
 }
 
-
+runRequests();
