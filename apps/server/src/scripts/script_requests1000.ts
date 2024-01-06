@@ -13,7 +13,7 @@ async function getreq() {
       throw new Error(`Erro na requisição: ${response.statusText}`);
     }
     const status = response.status
-    const data = await response.json();
+    
     console.log('Resposta recebida:', status);
   } catch (error) {
     console.error('Erro na requisição:', error.message);

@@ -16,7 +16,6 @@ async function getreq() {
       throw new Error(`Erro na requisição: ${response.statusText}`);
     }
 
-    const data = await response.json();
     const status = await response.status
     console.log('Sucesso', status)
   } catch (error) {
@@ -25,7 +24,7 @@ async function getreq() {
 }
 
 async function runRequests() {
-  for (let i = 0; i < 1000; i++) {
+  for (let i = 0; i < 100; i++) {
     await getreq();
   }
 }
