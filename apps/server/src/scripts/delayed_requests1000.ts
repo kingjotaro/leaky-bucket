@@ -2,7 +2,7 @@ import getCPF2 from '../utils/cpf_generator';
 
 async function getreq() {
   await new Promise(resolve => {
-    console.log("passou aqui");
+    console.log("delayd request log");
     setTimeout(resolve, 300);
   });
   const cpf = getCPF2();

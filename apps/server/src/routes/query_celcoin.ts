@@ -21,8 +21,9 @@ router.get("/get/:cpfOrCnpj", async (ctx: ParameterizedContext) => {
     } else if ((await verify_tokens(cpfOrCnpj)) === true) {
       await getQuery(cpfOrCnpj, ctx);
     } else {
-      console.error("Bucket is empty.");
-      ctx.body = "Bucket is empty.";
+      ctx.status = 429;
+      console.error("Too Many Requests - Bucket is empty.");
+      ctx.body = "Too Many Requests - Bucket is empty.";
     }
   } catch (error) {
     console.error("An error occurred:", error);
