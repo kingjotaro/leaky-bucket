@@ -7,7 +7,6 @@
     "dev": "vite",
     "dev1": "vite",
     "dev2": "vite",
-    "dev3": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"

@@ -6,10 +6,13 @@ import verifykey from "./routes/verify_key";
 import get from "./routes/query_celcoin";
 import getrandom from "./routes/query_celcoin_random";
 import schedule from "node-schedule";
-import increment_bucket from "./redis-bucket/bucket_schedule";
+import increment_bucket from "./redis-bucket/increment_bucket";
 import cors from "koa2-cors";
 import bucket_update from "./redis-bucket/bucket_update";
 import ratelimit from "koa-ratelimit";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = new Koa();
 const router = new Router();
@@ -20,27 +23,27 @@ router.get("/", async (ctx: ParameterizedContext) => {
 
 const db = new Map();
 
-app.use(async function (ctx, next) { 
- await ratelimit({
+app.use(async function (ctx, next) {
+  await ratelimit({
     driver: "memory",
     db: db,
     duration: process.env.NODE_FLAG2,
     max: process.env.NODE_FLAG,
     errorMessage: "Too many requests, slow down bro2!",
     errorStatus: 429,
-  })(ctx, next)
-  
+  })(ctx, next);
+
   if (ctx.status === 429) {
-    console.log(ctx.body); 
+    console.log(ctx.body);
   }
 });
 
 app.use(
   cors({
-    origin: 'http://localhost:5173', 
+    origin: "http://localhost:5173",
     credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], 
-    allowedHeaders: ['Content-Type', 'Authorization'],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 app.use(get.routes());
@@ -50,7 +53,7 @@ app.use(createkey.routes());
 app.use(router.routes());
 app.use(router.allowedMethods());
 
-const job = schedule.scheduleJob("0 * * * *", () => {
+const job = schedule.scheduleJob(process.env.TICKET_REGENERATE, () => {
   increment_bucket();
 });
 console.log("Job ongoing...");
@@ -72,10 +75,7 @@ const start = async () => {
     global.entities_tokens = parseInt(valueEntities, 10);
   }
 
-  const valueIndividuals = await client.hGet("Bucket", "Individuals");
-  if (valueIndividuals !== null) {
-    global.individuals_tokens = parseInt(valueIndividuals, 10);
-  }
+  global.individuals_tokens = process.env.BUCKET_SIZE;
 
   const keyExists = await client.get("createkey");
   if (keyExists !== null) {

@@ -4,11 +4,10 @@
   "description": "",
   "main": "index",
   "scripts": {
-    "test": "NODE_ENV=test NODE_FLAG=free  jest --forceExit",
-    "dev": "NODE_FLAG=10000 NODE_FLAG2=60000 ts-node src/index.ts",
-    "dev1": "NODE_FLAG=100 NODE_FLAG2=60000 ts-node src/index.ts",
-    "dev2": "NODE_FLAG=5 NODE_FLAG2=3000 ts-node src/index.ts",
-    "dev3": "NODE_FLAG=100 ts-node src/index.ts"
+    "test": "BUCKET_LIMIT=9999 TICKET_REGENERATE='*0 * * * *' BUCKET_REGENARATE=100 BUCKET_SIZE=1000  NODE_ENV=test NODE_FLAG=1000 NODE_FLAG2=60000 jest --forceExit",
+    "dev":  "BUCKET_LIMIT=1000 TICKET_REGENERATE='*0 * * * *' BUCKET_REGENARATE=100 BUCKET_SIZE=1000 NODE_FLAG=1000 NODE_FLAG2=60000 ts-node src/index.ts",
+    "dev1": "BUCKET_LIMIT=200 TICKET_REGENERATE='*/10 * * * * *' BUCKET_REGENARATE=10  BUCKET_SIZE=200 NODE_FLAG=1000 NODE_FLAG2=60000 ts-node src/index.ts",
+    "dev2": "BUCKET_LIMIT=200 TICKET_REGENERATE='*/20 * * * * *' BUCKET_REGENARATE=30  BUCKET_SIZE=200 NODE_FLAG=1000 NODE_FLAG2=60000 ts-node src/index.ts"
   },
   "author": "",
   "license": "ISC",

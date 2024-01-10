@@ -1,9 +1,14 @@
-import getreq from "./script";
+import getreq from "../routes/getreq";
 function Button_counter(props) {
-  const { sucess_count, SetSucess_count, fail_count, SetFail_count, SetFlag, data1, SetData1 } =
+  const { sucess_count, SetSucess_count, fail_count, SetFail_count, SetFlag} =
     props;
 
+
+
+
   async function runRequests() {
+
+
     for (let i = 0; i < 10; i++) {
       const { status } = await getreq();
       if (status === 200) {

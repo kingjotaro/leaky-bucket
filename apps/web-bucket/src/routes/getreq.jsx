@@ -1,4 +1,4 @@
-import cpf from "./cpf";
+import cpf from "../components/cpf";
 
 async function getreq() {
   await new Promise((resolve) => {
