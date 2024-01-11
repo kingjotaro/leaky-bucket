@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from "react";
+import Create_key from "./create_key";
 
-function DataComponent() {
+
+function DataComponent(props) {
+  const {SetStartCountdown} = props
   const [data, setData] = useState(null);
   const [on, setOn] = useState(false);
+
+
 
   const showData = () => {
     setOn(!on);
@@ -27,13 +32,16 @@ function DataComponent() {
 
   return (
     <div className="flex flex-col items-center mt-1">
+      <div className="flex  gap-5">
       <button
         onClick={showData}
-        className="bg-blue-500 text-white py-2 px-4 rounded-md mb-4"
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 py-2 rounded-lg" 
       >
         Show All the Data
       </button>
-
+      <Create_key SetStartCountdown={SetStartCountdown}></Create_key> 
+     
+      </div>
       {on && data ? (
         <div className="flex flex-col items-center justify-center">
           <h2 className="text-xl font-bold mb-2">Data</h2>

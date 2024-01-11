@@ -1,32 +1,31 @@
-import React from 'react'
-import verify from '../routes/verify'
-import { useState } from 'react';
+import React from "react";
+import verify from "../routes/verify";
+import { useState } from "react";
 
+function create_key(props) {
+  const { SetStartCountdown } = props;
+  const [text, SetText] = useState(false);
 
-
-
-function create_key() {
-
-  const [text, SetText] = useState('')
-
-async function create() {
-  const { status } = await verify();
-  if (status === 200) {
-   SetText('Key verified')
+  async function create() {
+    const { status } = await verify();
+    if (status === 200) {
+      SetText(true);
+      SetStartCountdown(true);
+    }
   }
- }
 
   return (
     <div>
-    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 py-2 rounded-lg" 
-    onClick={create}>Create Key or Verify Key</button>
-   
-   {text && (
-    <p className={text.includes('Key')  ? 'text-green' : 'hidden'}>{text} </p>
-   )}
-   
-  </div>
-  )
+      <button
+        className={`hover:bg-blue-700 text-white font-bold px-4 py-2 rounded-lg ${
+          text ? "bg-green-300" : "bg-yellow-500"
+        }`}
+        onClick={create}
+      >
+        Create Key
+      </button>
+    </div>
+  );
 }
 
-export default create_key
+export default create_key;

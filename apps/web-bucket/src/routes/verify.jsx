@@ -1,5 +1,5 @@
 async function verify() {
-    const url = "http://localhost:3000/verifykey"
+    const url = "http://localhost:3000/createkey"
     console.log("URL:", url);
   
     const response = await fetch(url);
