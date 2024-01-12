@@ -20,7 +20,7 @@ function MyResponsiveLine({ flag, sucess_count, fail_count }) {
   const dataReady = flag ? dataHold : [];
 
    return (
-    <div className="h-[32rem]">
+    <div className="h-[28rem] w-[50rem] ">
      <ResponsivePie
         data={dataReady}
         margin={{ top: 40, right: 80, bottom: 80, left: 80 }}

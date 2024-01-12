@@ -1,13 +1,11 @@
-import cpf from "../components/cpf";
-
-async function getreq() {
+async function getreq(param) {
   await new Promise((resolve) => {
-    console.log("passou aqui");
+    console.log("getreq log");
     setTimeout(resolve, 300);
   });
 
-  const cpf1 = cpf();
-  const url = "http://localhost:3000/get/" + cpf1;
+  
+  const url = `http://localhost:3000/get/${param}`;
   console.log("URL:", url);
 
   const response = await fetch(url);
