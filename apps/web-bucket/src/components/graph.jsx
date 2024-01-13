@@ -1,11 +1,11 @@
 import { ResponsivePie } from '@nivo/pie'
-function MyResponsiveLine({ flag, sucess_count, fail_count }) {
+function MyResponsiveLine({ flag, success_count, fail_count }) {
 
   const dataHold = ([
     {
       id: "Success",
       label: "Sucess",
-      value: sucess_count,
+      value: success_count,
       color: "hsl(10, 70%, 50%)",
     },
     {

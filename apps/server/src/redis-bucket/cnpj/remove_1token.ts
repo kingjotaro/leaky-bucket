@@ -1,4 +1,4 @@
-export default function remove_1token_cnpj() {
+export default async function remove_1token_cnpj() {
   
 
     if (global.entities_tokens > 0) {

@@ -25,7 +25,7 @@ function Home(props) {
       </h1>
 
       {startCountdown && (
-        <Countdown className="fixed" date={Date.now() + 2000 }  onComplete={handleCountdownComplete}>
+        <Countdown className="fixed" date={Date.now() + 2400000 }  onComplete={handleCountdownComplete}>
         </Countdown>
       )
       }

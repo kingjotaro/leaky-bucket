@@ -7,7 +7,7 @@ import SingleQuery from "./components/single_query";
 
 function App() {
   const [startCountdown, SetStartCountdown] = useState(false);
-  const [sucess_count, SetSucess_count] = useState(0);
+  const [success_count, SetSuccess_count] = useState(0);
   const [fail_count, SetFail_count] = useState(0);
   const [flag, SetFlag] = useState(false);
 
@@ -25,15 +25,15 @@ function App() {
       <div className="flex flex-col items-center jutify-center">
         <Button_counter
           fail_count={fail_count}
-          sucess_count={sucess_count}
+          success_count={success_count}
           SetFlag={SetFlag}
-          SetSucess_count={SetSucess_count}
+          SetSuccess_count={SetSuccess_count}
           SetFail_count={SetFail_count}
         ></Button_counter>
 
         <MyResponsiveLine
           flag={flag}
-          sucess_count={sucess_count}
+          success_count={success_count}
           fail_count={fail_count}
         />
 

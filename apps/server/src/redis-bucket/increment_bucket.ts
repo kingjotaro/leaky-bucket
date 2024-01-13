@@ -3,25 +3,43 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export default async function increment_bucket() {
+  const total_Individuals = global.individuals_tokens;
+  const total_Entities = global.entities_tokens;
+  const bucket_limit = parseInt(process.env.BUCKET_LIMIT, 10);
+  const individuals = parseInt(total_Individuals, 10);
+  const entities = parseInt(total_Entities, 10);
+  const regen_tax = parseInt(process.env.BUCKET_REGENARATE, 10);
 
-  const total_Individuals = await client.hGet("Bucket", "Individuals");
-  const total_Entities = await client.hGet("Bucket", "Entities");
-  const bucket_limit = parseInt(process.env.BUCKET_LIMIT, 10)
-  let individuals = parseInt(total_Individuals, 10)
-  let entities = parseInt(total_Entities, 10)
-  
+  async function update_individuals(tokens) {
+    global.individuals_tokens = tokens;
+    await client.hSet("Bucket", "Individuals", global.individuals_tokens);
+  }
+
+  async function update_entities(tokens) {
+    global.entities_tokens = tokens;
+    await client.hSet("Bucket", "Entities", global.entities_tokens);
+  }
 
   if (total_Individuals && total_Entities !== undefined) {
     if (individuals < bucket_limit) {
-      const new_Individuals = parseInt(total_Individuals, 10) + process.env.BUCKET_REGENARATE;
-      await client.hSet("Bucket", "Individuals", new_Individuals);
+      if (regen_tax > bucket_limit - individuals) {
+        update_individuals(bucket_limit);
+      } else {
+        global.individuals_tokens += regen_tax;
+        update_individuals(global.individuals_tokens);
+      }
     }
 
     if (entities < bucket_limit) {
-      const new_Entities = parseInt(total_Entities, 10) + process.env.BUCKET_REGENARATE;
-      await client.hSet("Bucket", "Entities", new_Entities);
+      if (regen_tax > bucket_limit - entities) {
+        update_entities(bucket_limit);
+      } else {
+      global.entities_tokens += regen_tax
+      update_entities( global.entities_tokens);
     }
 
     console.log("update redis");
+    }
   }
 }
+
