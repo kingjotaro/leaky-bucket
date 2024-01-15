@@ -6,7 +6,7 @@ import verifykey from "./routes/verify_key";
 import get from "./routes/query_celcoin";
 import getrandom from "./routes/query_celcoin_random";
 import schedule from "node-schedule";
-import increment_bucket from "./redis-bucket/increment_bucket";
+import increment from "./redis-bucket/increment";
 import cors from "koa2-cors";
 import bucket_update from "./redis-bucket/bucket_update";
 import ratelimit from "koa-ratelimit";
@@ -54,7 +54,7 @@ app.use(router.routes());
 app.use(router.allowedMethods());
 
 const job = schedule.scheduleJob(process.env.TICKET_REGENERATE, () => {
-  increment_bucket();
+  increment();
 });
 console.log("Job ongoing...");
 
@@ -74,8 +74,8 @@ const start = async () => {
   if (valueEntities !== null) {
     global.entities_tokens = parseInt(valueEntities, 10);
   }
-
-  global.individuals_tokens = process.env.BUCKET_SIZE;
+  //gambiarra das braba
+  global.individuals_tokens = parseInt(process.env.BUCKET_SIZE, 10);
 
   const keyExists = await client.get("createkey");
   if (keyExists !== null) {

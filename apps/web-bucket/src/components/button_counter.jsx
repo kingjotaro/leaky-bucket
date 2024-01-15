@@ -18,9 +18,11 @@ function ButtonCounter({SetSuccess_count, SetFail_count, SetFlag, success_count,
 
   async function runRequests() {
     const callsToMake = customApiCall || apiCall;
-    const cpf1 = cpf();
+    
 
     for (let i = 0; i < callsToMake; i++) {
+      const cpf1 = cpf();
+
       const { status } = await getreq(cpf1);
       if (status === 200) {
         console.log(success_count)

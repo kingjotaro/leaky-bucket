@@ -5,7 +5,7 @@ async function getreq(param) {
   });
 
   
-  const url = `http://localhost:3000/get/${param}`;
+  const url = `http://localhost:3000/get/`+ param;
   console.log("URL:", url);
 
   const response = await fetch(url);
