@@ -143,8 +143,8 @@ Runing Scenario 2 - Script A:
     MAX_REQ_RATE= 1000
     LIMITE_RATE_CD= 1 min 
 
-Making 100 request will be return a little more than 50, because we gonna regenerate 2 tokens each 10s, the graph gonna look like that, you can get differente values based on how fast your hardware is 
 
+Making 100 requests will return a little more than 50, as we are going to regenerate 2 tokens every 10 seconds. The graph will look like that, and you can get different values based on how fast your hardware is.
 
 
 ![teste](https://res.cloudinary.com/practicaldev/image/fetch/s--PCUPgynt--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_800/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/sdn36eiomfqc6d1ai2z5.png)
