@@ -8,7 +8,6 @@ import getrandom from "./routes/query_celcoin_random";
 import schedule from "node-schedule";
 import increment from "./redis-bucket/increment";
 import cors from "koa2-cors";
-import bucket_update from "./redis-bucket/bucket_update";
 import ratelimit from "koa-ratelimit";
 import dotenv from "dotenv";
 
@@ -27,8 +26,8 @@ app.use(async function (ctx, next) {
   await ratelimit({
     driver: "memory",
     db: db,
-    duration: process.env.NODE_FLAG2,
-    max: process.env.NODE_FLAG,
+    duration: process.env.LIMITE_RATE_CD,
+    max: process.env.MAX_REQ_RATE,
     errorMessage: "Too many requests, slow down bro2!",
     errorStatus: 429,
   })(ctx, next);
@@ -53,15 +52,12 @@ app.use(createkey.routes());
 app.use(router.routes());
 app.use(router.allowedMethods());
 
-const job = schedule.scheduleJob(process.env.TICKET_REGENERATE, () => {
+const job = schedule.scheduleJob(process.env.FREQUENCY_BUCKET, () => {
   increment();
 });
 console.log("Job ongoing...");
 
-const job2 = schedule.scheduleJob("*/10 * * * * *", () => {
-  bucket_update();
-});
-console.log("Job 2 ongoing too...");
+
 
 const start = async () => {
   await client.connect();
@@ -74,9 +70,10 @@ const start = async () => {
   if (valueEntities !== null) {
     global.entities_tokens = parseInt(valueEntities, 10);
   }
-  //gambiarra das braba
+  
   global.individuals_tokens = parseInt(process.env.BUCKET_SIZE, 10);
-
+  console.log(parseInt(process.env.BUCKET_SIZE, 10));
+  console.log( global.individuals_tokens)
   const keyExists = await client.get("createkey");
   if (keyExists !== null) {
     global.celcoinkey = keyExists;
