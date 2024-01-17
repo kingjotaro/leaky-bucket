@@ -1,9 +1,10 @@
 # Test Plan - Leaky Bucket Algorithm with Node and Redis
 
-**Author: Rafael Lourenço**
+<div align="center">
+Author: Rafael Lourenço
 
 ## TABLE OF CONTENTS
-
+</div>
 
  1.0 INTRODUCTION
 
@@ -14,6 +15,7 @@
 4.0 TEST
 
 5.0 RULES AND EXAMPLES
+
 
 
 <h2 align="center">
@@ -144,4 +146,6 @@ Runing Scenario 2 - Script A:
 Making 100 request will be return a little more than 50, because we gonna regenerate 2 tokens each 10s, the graph gonna look like that, you can get differente values based on how fast your hardware is 
 
 
+
 ![teste](https://res.cloudinary.com/practicaldev/image/fetch/s--PCUPgynt--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_800/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/sdn36eiomfqc6d1ai2z5.png)
+
