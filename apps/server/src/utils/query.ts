@@ -45,6 +45,7 @@ export const getQuery = async (
       } else {
         await remove_1token_cnpj();
         console.log("cnpj");
+        console.log(global.entities_tokens);
       }
     }
     if (status === 400) {
