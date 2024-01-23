@@ -6,7 +6,7 @@ dotenv.config();
 
 export default async function increment() {
 
-  console.log(global.individuals_tokens)
+
 
   const regen_tax = parseInt(process.env.BUCKET_REGENARATE, 10);
   const bucket_limit = parseInt(process.env.BUCKET_SIZE, 10);
@@ -21,7 +21,7 @@ export default async function increment() {
       await client.hSet("Bucket", "Entities", global.entities_tokens);
     }
   }
-  console.log(global.individuals_tokens)
+
 
   if (global.individuals_tokens < bucket_limit) {
     if (regen_tax < bucket_limit - global.individuals_tokens) {

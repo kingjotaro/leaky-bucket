@@ -20,7 +20,7 @@ git clone https://github.com/kingjotaro/leaky-bucket
 
    
 3. Set up your environment variables in server:
-   Create a `.env` file in the root directory and provide the following variables:
+   Create a `.env` file in the root server directory and provide the following variables:
 
    * CELCOIN_CLIENT_ID=your_client_id
    * CELCOIN_CLIENT_SECRET=your_client_secret
@@ -36,11 +36,34 @@ git clone https://github.com/kingjotaro/leaky-bucket
    
 ## Usage
 
-Start the application using the following command:
-turbo dev
+Start the application using the following commands:
+"turbo dev",
+"turbo dev1",
+"turbo dev2",
+"turbo dev3",
+each one of these has its own proper configuration, read the [gist](./gist.md) for more information
 
-This will launch the server on port 3000.
-And the frontend in port xxxx
+The server should be launch on port 3000 as default
+And the frontend in port 5173
+
+## Interface usage
+
+This is our simples interface, to use that is pretty simlple. 
+
+- Button **Show All the Data** Show all the data stored in Redis.
+
+- Button **Make API Call** Make the number of request that you have selectioned with a random CPF.
+
+- Button **Single Query** Make a single query with the CPF or CPNJ number that you have informed and show the response data.
+
+- Button **Create Key** create a key to use the API. 
+
+![Front](./img/front1.png)
+
+
+
+
+
 
 ## API Endpoints
 
@@ -77,6 +100,8 @@ And the frontend in port xxxx
 - **Description:**  This method will search for a CPF or a CNPJ in Redis memory. If it doesn't find anything in Redis, it will query the Celcoin API, retrieve the result, and save it in Redis.
 - **Response:** 
 
+### Backend Dependencies
+
 ## DevDependencies
 
 - `@types/jest`: ^29.5.11
@@ -84,8 +109,8 @@ And the frontend in port xxxx
 - `@types/koa-router`: ^7.4.8
 - `@types/redis`: ^4.0.11
 - `dotenv`: ^16.3.1
+- `esbuild-register`: ^3.5.0
 - `jest`: ^29.7.0
-- `nodemon`: ^3.0.2
 - `supertest`: ^6.3.3
 - `ts-jest`: ^29.1.1
 - `ts-node`: ^10.9.2
@@ -95,12 +120,40 @@ And the frontend in port xxxx
 
 - `@types/koa-bodyparser`: ^4.3.12
 - `api`: ^6.1.1
-- `file-system`: ^2.2.2
 - `koa`: ^2.14.2
 - `koa-bodyparser`: ^4.4.1
 - `koa-router`: ^12.0.1
+- `koa-ratelimit`: "^5.1.0",
+- `koa2-cors`: "^2.0.6",
 - `node-schedule`: ^2.1.1
 - `redis`: ^4.6.11
+
+### Frontend Dependecies
+
+## DevDependencies
+- `@types/react"`: "^18.2.43",
+- `@types/react-dom"`: "^18.2.17",
+- `@vitejs/plugin-react"`: "^4.2.1",
+- `autoprefixer"`: "^10.4.16",
+- `eslint"`: "^8.55.0",
+- `eslint-plugin-react"`: "^7.33.2",
+- `eslint-plugin-react-hooks"`: "^4.6.0",
+- `eslint-plugin-react-refresh"`: "^0.4.5",
+- `postcss-import"`: "^16.0.0",
+- `prettier"`: "^3.1.1",
+- `vite"`: "^5.0.8"
+- `prettier-plugin-tailwindcss"`: "^0.5.10",
+- `tailwindcss"`: "^3.4.0",
+
+## Dependencies
+
+- `@nivo/bump"`: "^0.84.0",
+- `"@nivo/line"`: "^0.84.0",
+- `"@nivo/pie"`: "^0.84.0",
+- `"react"`: "^18.2.0",
+- `"react-countdown"`: "^2.3.5",
+- `"react-dom"`: "^18.2.0"
+
 
 ## License
 

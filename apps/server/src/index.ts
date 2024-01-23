@@ -72,8 +72,7 @@ const start = async () => {
   }
   
   global.individuals_tokens = parseInt(process.env.BUCKET_SIZE, 10);
-  console.log(parseInt(process.env.BUCKET_SIZE, 10));
-  console.log( global.individuals_tokens)
+  
   const keyExists = await client.get("createkey");
   if (keyExists !== null) {
     global.celcoinkey = keyExists;
