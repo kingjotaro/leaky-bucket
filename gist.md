@@ -75,6 +75,7 @@ The first script is pretty simple; it's going to make 1000 valid cpf requests al
   <strong>4.0 TEST</strong>
 </h2>
 
+Scenario 1 
 
 Script A: In the initial scenario, we should have 1000 tokens in the Individuals bucket. To execute this, use turbo dev, which will set our rate limit to 1000 requests per minute. Run the script using ./1000_valid_req.sh, or go to the 'Scripts' folder inside the server app and execute it with ts-node. All requests should successfully pass and return a status code of 200. Additionally, all data should be stored in Redis, and all tokens should be removed.
 
@@ -82,7 +83,8 @@ Script B: In this scenario, we're going to reset our tokens to 1000 and change t
 
 	
 Scenario 2:
-This second script has a timeout of 0.3 seconds per request using CPF.
+
+This scenario has a timeout of 0.3 seconds per request using CPF.
 
 
 
